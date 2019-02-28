@@ -156,6 +156,20 @@ public class ConnectToMySQL : MonoBehaviour {
 			return;
 		}
 
+		foreach (string key in logCollection.Keys) {
+			if (logCollection[key].Count == 0) {
+				Debug.LogError("No Data Present in column " + key  + ". Please ensure that columns have data before adding to the upload queue.");
+				Debug.LogError("Aborting AddToUploadQueue..");
+				return;
+			}
+
+			if (logCollection[key].Count != logCollection["Email"].Count)  {
+				Debug.LogError("The " + key + " column contain more data than the e-mail column! Please make sure all columns are equal length.");
+				Debug.LogError("Aborting AddToUploadQueue..");
+				return;
+			}
+		}
+
 		logsToUpload.Add(new Dictionary<string, List<string>>(logCollection));
 
 		Debug.Log ("Log Collection with " + logCollection.Count + " columns prepared for upload.");
@@ -308,6 +322,22 @@ public class ConnectToMySQL : MonoBehaviour {
 				continue;
 			}
 
+			// Remove coldump if no logdump exists
+			if (!File.Exists(directory + "logdump" + i)) {
+				Debug.LogWarning("no logdump " + i + " available, deleting coldump..");
+				File.Delete (directory + "coldump" + i);
+				continue;
+			}
+
+			// determine whether  file is empty.
+			var fi = new FileInfo(directory + "logdump" + i);
+			if (fi.Length == 0) {
+				Debug.LogWarning("empty logdump " + i + ", deleting coldump and logdump..");
+				File.Delete (directory + "coldump" + i);
+				File.Delete (directory + "logdump" + i);
+				continue;
+			}
+
 			string line;
 
 			string dataString = "";
@@ -330,6 +360,12 @@ public class ConnectToMySQL : MonoBehaviour {
 
 			File.Delete (directory + "logdump" + i);
 			File.Delete (directory + "coldump" + i);
+
+			// determine whether filestrings are empty.
+			if (String.IsNullOrEmpty(dataString.Trim()) || String.IsNullOrEmpty(dbCols.Trim())) {
+				Debug.LogWarning("malformed dump " + i + ", deleting coldump and logdump..");
+				continue;
+			}
 
 			Debug.Log ("Dumped Logs Detected.");
 			
