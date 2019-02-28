@@ -5,6 +5,7 @@ using System.IO;
 using System;
 using UnityEngine.Networking;
 using System.Text;
+using System.Linq;
 using UnityEngine.UI;
 
 public class ConnectToMySQL : MonoBehaviour {
@@ -190,7 +191,7 @@ public class ConnectToMySQL : MonoBehaviour {
 		if (logsToUpload.Count > 0) {
 			foreach (Dictionary<string, List<string>> logCollection in logsToUpload) {
 				Debug.Log ("Attempting to upload logCollection with " + logCollection.Count + " rows.");
-				string dbCols = string.Join(sep,logCollection.Keys);
+				string dbCols = string.Join(sep,logCollection.Keys.ToArray());
 				string dataString = ParseDataToString(logCollection);
 				WWWForm form = PrepareForm(dbCols, dataString);
 
@@ -214,7 +215,7 @@ public class ConnectToMySQL : MonoBehaviour {
 			if(i != 0) {
 				dataString += ";";
 			}
-			dataString += string.Join(sep,row);
+			dataString += string.Join(sep,row.ToArray());
 		}
 		return dataString;
 	}
