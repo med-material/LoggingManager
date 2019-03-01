@@ -304,6 +304,11 @@ public class ConnectToMySQL : MonoBehaviour {
 	}
 
 	private void DetectDumpedLogs() {
+		// If no credentials are available, we skip dumplog detection.
+		if (credentials == null) {
+			Debug.LogWarning("No credentials loaded, aborting logdump detection..");
+			return;
+		}
 
 		var fileDumps = Directory.GetFiles(directory, "logdump*");
 
