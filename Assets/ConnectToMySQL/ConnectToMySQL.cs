@@ -230,10 +230,6 @@ public class ConnectToMySQL : MonoBehaviour {
 		form.AddField ("passwordPost", credentials["password"]);
 		form.AddField ("secHashPost",Md5Sum (credentials["dbSecKey"]));
 
-		foreach(KeyValuePair<string,string> cred in credentials) {
-		Debug.Log(cred.Key + " = " + cred.Value);
-		}
-
         colsHash = Md5Sum(dbCols);
 		form.AddField("db_hash", colsHash);
 		Debug.Log ("columns to insert: " + dbCols);
