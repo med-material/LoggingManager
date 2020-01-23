@@ -210,6 +210,16 @@ public class ConnectToMySQL : MonoBehaviour {
 		for(int i = 0; i < logCollection["Email"].Count; i++) {
 			List<string> row = new List<string>();
 			foreach(string key in logCollection.Keys) {
+				if (logCollection[key][i].Contains(",")) {
+					Debug.LogWarning("Value " + logCollection[key] + "from column " + key + "contains comma (,). It has been replaced with a dot.");
+					logCollection[key][i].Replace(',', '.');
+				} else if (logCollection[key][i].Contains(";")) {
+					Debug.LogWarning("Value " + logCollection[key] + "from column " + key + "contains semi-colon (;). It has been replaced with a dash.");
+					logCollection[key][i].Replace(';', '-');
+				} else if (logCollection[key][i].Contains("\"")) {
+					Debug.LogWarning("Value " + logCollection[key] + "from column " + key + "contains quotation mark (\"). It has been replaced with a dash.");
+					logCollection[key][i].Replace('\"', '-');
+				}
 				row.Add(logCollection[key][i]);
 			}
 			if(i != 0) {
