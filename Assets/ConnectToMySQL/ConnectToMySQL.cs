@@ -445,7 +445,7 @@ public class ConnectToMySQL : MonoBehaviour {
 		string[] lines = builtInCredentials.text.Split('\n');
 		foreach (var line in lines) {
 			if (!string.IsNullOrEmpty(line)) {
-				cred = line.Split('=');
+				cred = line.Trim().Split('=');
 				credentials[cred[0]] = cred[1];
 			}
 		}
