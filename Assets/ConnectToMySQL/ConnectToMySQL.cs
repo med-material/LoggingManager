@@ -235,6 +235,12 @@ public class ConnectToMySQL : MonoBehaviour {
 				} else if (logCollection[key][i].Contains("\"")) {
 					Debug.LogWarning("Value " + logCollection[key] + "from column " + key + "contains quotation mark (\"). It has been replaced with a dash.");
 					logCollection[key][i].Replace('\"', '-');
+				} else if (logCollection[key][i].Contains("\n")) {
+					Debug.LogWarning("Value " + logCollection[key] + "from column " + key + "contains return character. It has been removed.");
+					logCollection[key][i].Replace("\n", String.Empty);
+				} else if (logCollection[key][i].Contains("\r")) {
+					Debug.LogWarning("Value " + logCollection[key] + "from column " + key + "contains return character. It has been removed.");
+					logCollection[key][i].Replace("\r", String.Empty);
 				}
 				row.Add(logCollection[key][i]);
 			}
