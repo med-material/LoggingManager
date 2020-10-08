@@ -96,7 +96,7 @@ public class LoggingManager : MonoBehaviour
             }
             SaveToSQL(collectionLabel);
         } else {
-            LogError("No Collection Called " + collectionLabel);
+            Debug.LogError("No Collection Called " + collectionLabel);
         }
     }
 
