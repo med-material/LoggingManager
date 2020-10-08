@@ -90,10 +90,14 @@ public class LoggingManager : MonoBehaviour
     }
 
     public void SaveLog(string collectionLabel) {
-        if (Application.platform != RuntimePlatform.WebGLPlayer) {
-            SaveToCSV(collectionLabel);
+        if (collections.ContainsKey(collectionLabel)) {
+            if (Application.platform != RuntimePlatform.WebGLPlayer) {
+                SaveToCSV(collectionLabel);
+            }
+            SaveToSQL(collectionLabel);
+        } else {
+            LogError("No Collection Called " + collectionLabel);
         }
-        SaveToSQL(collectionLabel);
     }
 
     public void CreateLog(string collectionLabel) {
