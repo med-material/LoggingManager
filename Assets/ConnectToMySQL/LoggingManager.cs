@@ -203,39 +203,46 @@ public class LoggingManager : MonoBehaviour
     private void SaveToCSV(string label)
     {
         if(!enableCSVSave) return;
-        
+        string headerLine = "";
         if (collections[label].saveHeaders) {
-            GenerateHeaders(collections[label]);
-            collections[label].saveHeaders = false;
+            headerLine = GenerateHeaders(collections[label]);
         }
         object temp;
-        for (int i = 0; i <= collections[label].count; i++)
-        {
-            string line = "";
-            foreach (KeyValuePair<string, Dictionary<int, object>> log in collections[label].log)
-            {
-                if (line != "")
-                {
-                    line += fieldSeperator;
-                }
-                
-                if (log.Value.TryGetValue(i, out temp))
-                {
-                    line += ConvertToString(temp);
-                }
-                else
-                {
-                    line += "NULL";
-                }
+        string filename = collections[label].label;
+        string filePath = savePath + "/" + filePrefix + filestamp + filename + fileExtension;
+        using (var file = new StreamWriter(filePath, true)) {
+            if (collections[label].saveHeaders) {
+                file.WriteLine(headerLine);
+                collections[label].saveHeaders = false;
             }
-            SaveToFile(collections[label].label, line);
+            for (int i = 0; i <= collections[label].count; i++)
+            {
+                string line = "";
+                foreach (KeyValuePair<string, Dictionary<int, object>> log in collections[label].log)
+                {
+                    if (line != "")
+                    {
+                        line += fieldSeperator;
+                    }
+                    
+                    if (log.Value.TryGetValue(i, out temp))
+                    {
+                        line += ConvertToString(temp);
+                    }
+                    else
+                    {
+                        line += "NULL";
+                    }
+                }
+                file.WriteLine(line);
+            }
         }
         Debug.Log( label + " logs with " + collections[label].count+1 + " rows saved to " + savePath);
     }
 
 
     // Generates the headers in a CSV format and saves them to the CSV file
-    private void GenerateHeaders(LogCollection collection)
+    private string GenerateHeaders(LogCollection collection)
     {
         string headers = "";
         foreach (string key in collection.log.Keys)
@@ -246,19 +253,7 @@ public class LoggingManager : MonoBehaviour
             }
             headers += key;
         }
-        SaveToFile(collection.label, headers);
-    }
-
-    // Saves the given CSV line to the CSV file.
-    private void SaveToFile(string filename, string line, bool end = true)
-    {
-        string tempLine = line;
-        filePath = savePath + "/" + filePrefix + filestamp + filename + fileExtension;
-        if (end)
-        {
-            tempLine += Environment.NewLine;
-        }
-        File.AppendAllText(filePath, tempLine);
+        return headers;
     }
 
     private void SaveToSQL(string label)
