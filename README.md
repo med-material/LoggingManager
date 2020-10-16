@@ -1,4 +1,4 @@
-# How To Use with LoggingManager
+# LoggingManager
 Provides a UnityPackage for logging data to CSV and to MySQL databases. For examples of using the LoggingManager, see the included [LoggingExample.cs](https://github.com/med-material/ConnectToMySQL/blob/master/Assets/ConnectToMySQL/LoggingExample.cs).
 
 ## ConnectToMySQL (Optional)
