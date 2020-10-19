@@ -241,9 +241,7 @@ public class ConnectToMySQL : MonoBehaviour {
 			}
 
 			if (logCollection[key].Keys.Count != logCollection["Email"].Keys.Count)  {
-				Debug.LogWarning("The " + key + " column contain " + logCollection[key].Keys.Count + " rows, but the e-mail column contains " + logCollection["Email"].Keys.Count + "! Please make sure all columns are equal length.");
-				//Debug.LogError("Aborting AddToUploadQueue..");
-				//return;
+				Debug.LogWarning("The " + key + " column contain " + logCollection[key].Keys.Count + " rows, but the e-mail column contains " + logCollection["Email"].Keys.Count + "! Empty values will be passed on as NULL values.");
 			}
 		}
 		if (dataTargets.ContainsKey(targetLabel)) {
