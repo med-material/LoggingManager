@@ -100,6 +100,10 @@ public class LoggingManager : MonoBehaviour
         }
     }
 
+    public void SetEmail(string newEmail) {
+        email = newEmail;
+    }
+
     public void CreateLog(string collectionLabel) {
         collections.Add(collectionLabel, new LogCollection());
     }
