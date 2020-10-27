@@ -33,8 +33,12 @@ public class LoggingExample : MonoBehaviour
         loggingManager.SaveLog("MyLabel");
 
         // After saving the data, you can tell the logging manager to clear its logs.
-        // Now its ready to save more data.
+        // Now its ready to save more data. Saving data will append to the existing log.
         loggingManager.ClearLog("MyLabel");
+
+        // If you want to start a new file, you can ask loggingManager to generate
+        // a new file timestamp. Saving data hereafter will go to the new file.
+        loggingManager.NewFilestamp();
         
     }
 

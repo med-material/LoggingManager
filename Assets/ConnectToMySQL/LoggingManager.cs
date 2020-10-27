@@ -63,7 +63,7 @@ public class LoggingManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        filestamp = GetTimeStamp().Replace('/', '-').Replace(":", "-");
+        NewFilestamp();
         if (CreateMetaCollection) {
             GenerateUIDs();
             Log("Meta", "SessionID", sessionID, LogMode.Overwrite);
@@ -86,6 +86,20 @@ public class LoggingManager : MonoBehaviour
     public void SaveAllLogs() {
         foreach(KeyValuePair<string, LogCollection> pair in collections) {
             SaveLog(pair.Value.label);
+        }
+    }
+
+    public void NewFilestamp() {
+        filestamp = GetTimeStamp().Replace('/', '-').Replace(":", "-");
+
+        if (CreateMetaCollection) {
+            GenerateUIDs();
+            Log("Meta", "SessionID", sessionID, LogMode.Overwrite);
+            Log("Meta", "DeviceID", deviceID, LogMode.Overwrite);
+        }
+
+        foreach(KeyValuePair<string, LogCollection> pair in collections) {
+            pair.Value.saveHeaders = true;
         }
     }
 
