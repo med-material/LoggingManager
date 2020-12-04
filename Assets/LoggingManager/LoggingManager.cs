@@ -65,11 +65,6 @@ public class LoggingManager : MonoBehaviour
     {
         CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
         NewFilestamp();
-        if (CreateMetaCollection) {
-            GenerateUIDs();
-            Log("Meta", "SessionID", sessionID, LogMode.Overwrite);
-            Log("Meta", "DeviceID", deviceID, LogMode.Overwrite);
-        }
         if (savePath == "") {
             savePath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
         }
