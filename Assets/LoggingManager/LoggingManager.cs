@@ -55,7 +55,7 @@ public class LoggingManager : MonoBehaviour
     private string fileExtension = ".csv";
 
     private string filePath;
-    private char fieldSeperator = ',';
+    private char fieldSeperator = ';';
     private string sessionID = "";
     private string deviceID = "";
     private string filestamp;
@@ -63,6 +63,7 @@ public class LoggingManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
         NewFilestamp();
         if (CreateMetaCollection) {
             GenerateUIDs();
