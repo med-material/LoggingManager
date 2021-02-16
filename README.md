@@ -4,7 +4,7 @@ Provides a UnityPackage for logging data to CSV and to MySQL databases. For exam
 ## ConnectToMySQL (Optional)
 ![ConnectToMySQL Dialog](https://raw.githubusercontent.com/med-material/ConnectToMySQL/master/connect-to-mysql-image.png)
 
-The LoggingManager optionally supports sending data to a MySQL database (See Builds/ folder).
+The LoggingManager optionally supports sending data to a MySQL database.
 When enabled, the package will ask for credentials at runtime and save them to disk (and never ask again).
 Optionally the credentials can be compiled into binaries for deployment purposes.
 
