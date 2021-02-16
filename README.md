@@ -5,10 +5,10 @@ Provides a UnityPackage for logging data to CSV and to MySQL databases. For exam
 ![ConnectToMySQL Dialog](https://raw.githubusercontent.com/med-material/ConnectToMySQL/master/connect-to-mysql-image.png)
 
 The LoggingManager optionally supports sending data to a MySQL database.
-When enabled, the package will ask for credentials at runtime and save them to disk (and never ask again).
+When enabled, a dialog will ask for credentials at runtime and save them to disk (and never ask again).
 Optionally the credentials can be compiled into binaries for deployment purposes.
 
-Students should get credentials via their supervisor.
+Students should get credentials and database via their supervisor.
 
 ## Good Logging Practices
  - Log `System.DateTime.Now` (requires `using System;`) (This is automatically done by LoggingManager).
