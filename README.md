@@ -1,6 +1,9 @@
 # LoggingManager
 Provides a UnityPackage for logging data to CSV and to MySQL databases. For examples of using the LoggingManager, see the included [LoggingExample.cs](https://github.com/med-material/LoggingManager/blob/master/Assets/LoggingManager/LoggingExample.cs).
 
+## CSV Logging
+CSV Logs are stored by default in your computer's Documents folder. The file path can also be overriden by a custom path, set from Unity (be aware that the custom file path may not be transferable to other computers and fail silently.)
+
 ## ConnectToMySQL (Optional)
 ![ConnectToMySQL Dialog](https://raw.githubusercontent.com/med-material/ConnectToMySQL/master/connect-to-mysql-image.png)
 
