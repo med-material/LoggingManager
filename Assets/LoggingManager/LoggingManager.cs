@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System;
+using System.Linq;
 using System.Globalization;
 
 public enum LogMode {
@@ -196,14 +197,18 @@ public class LoggingManager : MonoBehaviour
 
     public void ClearAllLogs() {
         foreach (KeyValuePair<string, LogCollection> pair in collections) {
-            collections[pair.Key].log.Clear();
+            foreach (var key in collections[pair.Key].log.Keys.ToList()) {
+                collections[pair.Key].log[key] = new Dictionary<int, object>();
+            }
             collections[pair.Key].count = 0;
         }
     }
 
     public void ClearLog(string collectionLabel) {
         if (collections.ContainsKey(collectionLabel)) {
-            collections[collectionLabel].log.Clear();
+            foreach (var key in collections[collectionLabel].log.Keys.ToList()) {
+                collections[collectionLabel].log[key] = new Dictionary<int, object>();
+            }
             collections[collectionLabel].count = 0;
         } else {
             Debug.LogError("Collection " + collectionLabel + " does not exist.");
