@@ -3,6 +3,14 @@ Provides a UnityPackage for logging data to CSV and to MySQL databases. For exam
 
 ### [Download The Unitypackage Here](https://github.com/med-material/LoggingManager/releases/latest)
 
+## How to Import Into Unity
+ 1. Download the [Unity Package](https://github.com/med-material/LoggingManager/releases/latest).
+ 2. Open Unity and go to `Assets -> Import Package -> Custom Package` and press `Import`. Make sure there are no compiling errors, but if there are please [file an issue](https://github.com/med-material/LoggingManager/issues/new/choose).
+ 3. Create an Empty GameObject that you can call `LoggingManager`
+ 4. Go to `Add Component` and write `LoggingManager` - Add the LoggingManager script to the game object.
+ 5. Enable CSV file saving and/or MySQL saving depending on what you will use
+ 6. Look at LoggingExample.cs for how to use it - CSV files are by default saved to `Documents` unless a file path is specified. Be aware, that if any custom file path is invalid, the CSV saving will fail, so it is safest to leave the filepath blank.
+
 ## CSV Logging
 CSV Logs are stored by default in your computer's Documents folder. The file path can also be overriden by a custom path, set from Unity (be aware that the custom file path may not be transferable to other computers and fail silently.)
 
