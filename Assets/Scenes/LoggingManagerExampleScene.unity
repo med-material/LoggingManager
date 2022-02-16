@@ -383,10 +383,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CreateMetaCollection: 1
-  enableMySQLSave: 1
+  enableMySQLSave: 0
   email: anonymous
   connectToMySQL: {fileID: 0}
   enableCSVSave: 1
+  logStringOverTime: 1
   savePath: 
   filePrefix: log
   fileExtension: .csv
