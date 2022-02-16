@@ -135,14 +135,14 @@ public class LoggingManager : MonoBehaviour
         email = newEmail;
     }
 
-    public void CreateLog(string collectionLabel)
+    public void CreateLog(string collectionLabel, List<string> headers = null)
     {
         if (logsList.ContainsKey(collectionLabel))
         {
             Debug.LogWarning(collectionLabel + " already exists");
             return;
         }
-        LogStore logStore = new LogStore(collectionLabel, email, sessionID, logStringOverTime);
+        LogStore logStore = new LogStore(collectionLabel, email, sessionID, logStringOverTime, headers:headers);
         logsList.Add(collectionLabel, logStore);
     }
 
