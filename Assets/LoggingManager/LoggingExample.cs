@@ -37,7 +37,7 @@ public class LoggingExample : MonoBehaviour
         // Tell the logging manager to save the data (to disk and SQL by default).
         // Saving the data is an asynchronous process. 
         // If you wish to clear the logs after saving, specify clear:true.
-        loggingManager.SaveLog("MyLabel", clear:true);
+        loggingManager.SaveAllLogs(clear:true);
 
         // If you want to start a new file, you can ask loggingManager to generate
         // a new file timestamp. Saving data hereafter will go to the new file.
