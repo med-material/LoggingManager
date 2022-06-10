@@ -17,13 +17,15 @@ public class LoggingExample : MonoBehaviour
         // Find the logging Manager in the scene.
         loggingManager = GameObject.Find("Logging").GetComponent<LoggingManager>();
 
-        // Start by telling logging manager to create a new collection og logs
+        // Start by telling logging manager to create a new collection of logs
         // and optionally pass the column headers.
         // Column headers can also be added dynamically, but declaring headers
         // from the beginning gives best performance.
+        // CreateLog (string [LogCollectionLabel], list<string> [ColumnHeaders])
         loggingManager.CreateLog("MyLabel", headers: new List<string>() { "Highscore", "SoundVolume","PlayerName"});
 
         // Tell the logging manager to store a piece of data into a column called "highscore".
+        // Log (string [LogCollectionLabel], string [ColumnName], object [WhatValue])
         loggingManager.Log("MyLabel", "Highscore", highscore);
 
         // You can also send a dictionary with multiple data entries at once.
