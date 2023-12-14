@@ -1,5 +1,5 @@
 # LoggingManager
-Provides a UnityPackage for logging data to CSV and to MySQL databases. For examples of using the LoggingManager, see the included [LoggingExample.cs](https://github.com/med-material/LoggingManager/blob/master/Assets/LoggingManager/LoggingExample.cs).
+Provides a UnityPackage for logging data to CSV and to MySQL databases. For examples of using the LoggingManager, see the included [LoggingExample.cs](https://github.com/med-material/LoggingManager/blob/master/Assets/LoggingManager/LoggingExample.cs). 
 
 ### [Download The Unitypackage Here](https://github.com/med-material/LoggingManager/releases/latest)
 
@@ -15,7 +15,7 @@ Provides a UnityPackage for logging data to CSV and to MySQL databases. For exam
 CSV Logs are stored by default in your computer's Documents folder. The file path can also be overriden by a custom path, set from Unity (be aware that the custom file path may not be transferable to other computers and fail silently.)  The LoggingManager produces CSV files with semicolon (";") separation by default, making to possible to inspect in spreadsheet software like Excel and Calc. By default LoggingManager will produce a Meta file, along with your log file. 
 
 ## Recommended Logging Structures
-Users of LoggingManager are free to use any structure of logging as they please - there is no explicit structure imposed.We generally recommend logging to several CSV files and use multiple logging structures, depending on the nature of the data you want to capture. In the subsections below we explain a recommended structure, for others looking to log data.
+Users of LoggingManager are free to use any structure of logging as they please - there is no explicit structure imposed.We generally recommend logging to several CSV files and use multiple logging structures, depending on the nature of the data you want to capture. In the subsections below we explain a recommended structure, for others looking to log data. This recommended structure is used by LoggingLoader_R to combine and batch import data automatically (see https://github.com/med-material/LoggingLoader_R)
 
 ### Event.CSV
 Log your event data to a file, whenever a new event happens in your application. The data in the event file is lightweight, because it is only logged whenever needed and not every x milliseconds. Typically, your event data file should have this structure, that centers around an Event column, with some extra context information around it. From the Event CSV, you get a complete timeline over what happened in your application.
