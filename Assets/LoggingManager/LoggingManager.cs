@@ -45,7 +45,7 @@ public class LoggingManager : MonoBehaviour
 
     [Header("MySQL Save Settings")]
     [SerializeField]
-    private bool enableMySQLSave = true;
+    private bool enableMySQLSave = false;
     [SerializeField]
     private string email = "anonymous";
 
