@@ -100,7 +100,7 @@ public class WriteToCSV
         TimeSpan writeTs = writeStopwatch.Elapsed;
         string writeElapsedTime = String.Format("{0:00}:{1:0000}",
             writeTs.Seconds, writeTs.Milliseconds);
-        Debug.Log(logStore.Label + " logs wrote to file in " + writeElapsedTime);
+        Debug.Log(logStore.Label + " logs wrote to file in " + writeElapsedTime + " to " + filePath);
     }
 
 }

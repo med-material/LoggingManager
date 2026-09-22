@@ -64,7 +64,7 @@ public class LoggingManager : MonoBehaviour
     private bool logStringOverTime = true;
 
 
-    [Tooltip("If save path is empty, it defaults to My Documents.")]
+    [Tooltip("If save path is empty, it defaults to the App's Persistent Storage.")]
     [SerializeField]
     private string savePath = "";
 
@@ -117,8 +117,9 @@ public class LoggingManager : MonoBehaviour
         }
 
         if (savePath == "")
-        {
-            savePath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+        {   // Was Previously System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+            // Application.persistentDataPath is the appropriate cross-platform location for saves, settings, caches, and logs.
+            savePath = Application.persistentDataPath;
         }
     }
 
